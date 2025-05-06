@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'Home'])->name('index.home');
 
-Route::get('/information',[InfoController::class,'info'])->name('information.info');
+Route::get('/information',[InfoController::class,'info'])->name('info.info');
 
 Route::get('/Profile',[ProfileController::class,'Profile'])->name('Profile.profile');
 

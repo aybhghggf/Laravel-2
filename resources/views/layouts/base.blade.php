@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Exemple Nav & Footer</title>
+  <title>@yield('title')</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">MonSite</a>
+      <a class="navbar-brand" href="{{ route('index.home') }}">MonSite</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,19 +18,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('index.home') }}">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Mon Profil</a>
+            <a class="nav-link" href="{{ route('Profile.profile') }}">Mon Profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Mes Informations</a>
+            <a class="nav-link" href="{{ route('info.info') }}">Mes Informations</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
+  @yield('home')
   @yield('information')
   @yield('profile')
 
