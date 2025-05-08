@@ -26,6 +26,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('info.info') }}">Mes Informations</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('T.profiles') }}">Tous Les Profiles</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -33,6 +36,7 @@
   @yield('home')
   @yield('information')
   @yield('profile')
+  @yield('Profiles')
 
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3 mt-5">
