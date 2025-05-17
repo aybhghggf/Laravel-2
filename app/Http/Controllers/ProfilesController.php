@@ -19,17 +19,23 @@ class ProfilesController extends Controller
     }
     public function store(Request $request)
     {
-        $profile = Profile::create([
+
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email|unique:profiles',
+            'password' => 'required',
+        ]);
+        $iscreate = Profile::create([
             'Nom' => $request->nom,
             'Prenom' => $request->prenom,
             'Email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-
-        if ($profile) {
-            return redirect()->route('T.profiles')->with('success', 'Profile ajouté avec succès');
-        } else {
-            return redirect()->route('T.profiles')->with('error', 'Une erreur est survenue, veuillez réessayer');
+        if ($iscreate) {
+            return to_route('T.profiles')->with('success', 'Profile created successfully');
+        }else{
+            return to_route('T.profiles')->with('error', 'Profile not created');
         }
     }
 }
