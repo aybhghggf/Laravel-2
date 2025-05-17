@@ -21,9 +21,6 @@
             <a class="nav-link active" aria-current="page" href="{{ route('index.home') }}">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('Profile.profile') }}">Mon Profil</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{{ route('info.info') }}">Mes Informations</a>
           </li>
           <li class="nav-item">
@@ -33,13 +30,14 @@
       </div>
     </div>
   </nav>
+
   @yield('home')
   @yield('information')
   @yield('profile')
   @yield('Profiles')
-
+  @yield('MonProfile')
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3 mt-5">
+  <footer class="bg-dark text-white text-center py-3 mt-5" style="margin-top: auto;">
     <div class="container">
       <p class="mb-0">&copy; 2025 MonSite. Tous droits réservés.</p>
     </div>

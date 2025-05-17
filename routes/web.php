@@ -13,3 +13,7 @@ Route::get('/information',[InfoController::class,'info'])->name('info.info');
 Route::get('/Profile',[ProfileController::class,'Profile'])->name('Profile.profile');
 
 Route::get('/profiles',[ProfilesController::class,'TousLesProfiles'])->name('T.profiles');
+
+Route::get('/profiles/{id}', [ProfilesController::class, 'AfficherUnProfile'])->name('profiles.show');
+
+Route::post('/store',[ProfilesController::class,'store'])->name('create');
