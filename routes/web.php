@@ -23,3 +23,5 @@ Route::get('/Login',[ProfileController::class,'show'])->name('Login.show');
 Route::post('/Login',[ProfileController::class,'Login'])->name('Login');
 
 Route::post('/Logout',[ProfileController::class,'Logout'])->name( 'Logout');
+
+Route::delete('/delete/{id}', [ProfilesController::class, 'Delete'])->name('profiles.delete');

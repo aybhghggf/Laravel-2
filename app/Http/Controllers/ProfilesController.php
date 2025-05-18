@@ -35,5 +35,10 @@ class ProfilesController extends Controller
         } else {
             return to_route('T.profiles')->with('error', 'Profile not created');
         }
+    } 
+    public function Delete( $id){
+        $profile = Profile::FindorFail($id);
+        $profile-> delete();
+        return to_route('T.profiles')->with('success', 'Profile deleted successfully');
     }
 }
