@@ -17,3 +17,9 @@ Route::get('/profiles',[ProfilesController::class,'TousLesProfiles'])->name('T.p
 Route::get('/profiles/{id}', [ProfilesController::class, 'AfficherUnProfile'])->name('profiles.show');
 
 Route::post('/store',[ProfilesController::class,'store'])->name('create');
+
+Route::get('/Login',[ProfileController::class,'show'])->name('Login.show');
+
+Route::post('/Login',[ProfileController::class,'Login'])->name('Login');
+
+Route::post('/Logout',[ProfileController::class,'Logout'])->name( 'Logout');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -17,24 +18,21 @@ class ProfilesController extends Controller
         $profile = Profile::FindorFail($id);
         return view('detaille', ['profile' => $profile]);
     }
-    public function store(Request $request)
+    public function store(ProfileRequest $request)
     {
 
-        $request->validate([
-            'nom' => 'required',
-            'prenom' => 'required',
-            'email' => 'required|email|unique:profiles',
-            'password' => 'required',
-        ]);
+        $data = $request->validated();
+
         $iscreate = Profile::create([
-            'Nom' => $request->nom,
-            'Prenom' => $request->prenom,
-            'Email' => $request->email,
-            'password' => bcrypt($request->password),
+            'Nom' => $data['nom'],
+            'Prenom' => $data['prenom'],
+            'Email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
+
         if ($iscreate) {
             return to_route('T.profiles')->with('success', 'Profile created successfully');
-        }else{
+        } else {
             return to_route('T.profiles')->with('error', 'Profile not created');
         }
     }

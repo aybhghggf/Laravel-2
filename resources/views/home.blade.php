@@ -2,6 +2,16 @@
 @section('title') Home  @endsection
 
 @section('home')
+@if($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 max-w-md mx-auto">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="max-w-md mx-auto mt-10">
     <form method="POST" action="{{ route('create') }}"  class="bg-white shadow-sm p-5 rounded border mx-auto" style="max-width: 450px;">
         @csrf
