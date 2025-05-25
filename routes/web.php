@@ -25,3 +25,5 @@ Route::post('/Login',[ProfileController::class,'Login'])->name('Login');
 Route::post('/Logout',[ProfileController::class,'Logout'])->name( 'Logout');
 
 Route::delete('/delete/{id}', [ProfilesController::class, 'Delete'])->name('profiles.delete');
+
+Route::get('update/{id}', [ProfileController::class, 'ShowUpdate'])->name('update.show');

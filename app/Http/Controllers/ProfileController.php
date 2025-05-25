@@ -33,4 +33,7 @@ class ProfileController extends Controller
         Auth::logout();
         return redirect()->route('Login')->with( 'success', 'Vouz avez bien vous deconnecter' );
     }
+    public function ShowUpdate(){
+        return view('Update');
+    }
 }

@@ -23,11 +23,16 @@
                             <p class="card-text"><strong>Email:</strong> {{ $profile->Email }}</p>
                             <p class="card-text"><strong>Créé le:</strong> {{ $profile->created_at }}</p>
                             <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-primary">Detaille</a>
-                            <form action="{{ route('profiles.delete', $profile->id) }}" method="post">
+                            <form action="{{ route('profiles.delete', $profile->id) }}" method="post" class="inline-block">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                    Supprimer
+                                </button>
                             </form>
+                            <a href="{{ route('update.show', $profile->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Modifier
+                            </a>
                             
 
                         </div>
