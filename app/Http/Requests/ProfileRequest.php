@@ -23,7 +23,8 @@ class ProfileRequest extends FormRequest
             'nom' => 'required',
             'prenom' => 'required',
             'email' => 'required|email|unique:profiles,email', // ✅ Specify table and column
-            'password' => 'required|min:6', // Optional: enforce a minimum length
+            'password' => 'required|min:6', 
+            'image'=> 'required|mimes:jpg,jpeg,png,gif',
         ];
     }
 }

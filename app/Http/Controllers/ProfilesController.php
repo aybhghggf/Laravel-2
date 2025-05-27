@@ -20,14 +20,14 @@ class ProfilesController extends Controller
     }
     public function store(ProfileRequest $request)
     {
-
         $data = $request->validated();
-
+        $data['image'] = $request->hasFile('image') ? $request->file('image')->store('images', 'public') : null;
         $iscreate = Profile::create([
             'Nom' => $data['nom'],
             'Prenom' => $data['prenom'],
             'Email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'image' => $data['image'],
         ]);
 
         if ($iscreate) {
@@ -35,10 +35,11 @@ class ProfilesController extends Controller
         } else {
             return to_route('T.profiles')->with('error', 'Profile not created');
         }
-    } 
-    public function Delete( $id){
+    }
+    public function Delete($id)
+    {
         $profile = Profile::FindorFail($id);
-        $profile-> delete();
+        $profile->delete();
         return to_route('T.profiles')->with('success', 'Profile deleted successfully');
     }
 }
