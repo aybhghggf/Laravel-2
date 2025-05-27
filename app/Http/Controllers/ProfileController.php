@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -33,7 +36,27 @@ class ProfileController extends Controller
         Auth::logout();
         return redirect()->route('Login')->with( 'success', 'Vouz avez bien vous deconnecter' );
     }
-    public function ShowUpdate(){
-        return view('Update');
+    public function ShowUpdate($id){
+        $profile=Profile::findOrFail( $id );
+        return view('Update',compact( 'profile' ));
     }
+
+public function Update(Request $req, Profile $profile)
+{
+    $data = $req->post();
+
+    $updatedata = [
+        'Nom' => $data['nom'],
+        'Prenom' => $data['prenom'],
+        'Email' => $data['email'],
+        'password' => Hash::make($data['password']),
+    ];
+
+    $profile->fill($updatedata)->save();
+
+    return redirect()
+        ->route('T.profiles')
+        ->with('success', 'Vous avez bien modifié votre profil');
+}
+
 }

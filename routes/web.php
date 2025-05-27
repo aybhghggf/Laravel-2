@@ -26,4 +26,6 @@ Route::post('/Logout',[ProfileController::class,'Logout'])->name( 'Logout');
 
 Route::delete('/delete/{id}', [ProfilesController::class, 'Delete'])->name('profiles.delete');
 
-Route::get('update/{id}', [ProfileController::class, 'ShowUpdate'])->name('update.show');
+Route::get('edit/{id}', [ProfileController::class, 'ShowUpdate'])->name('update.show');
+
+Route::put('edit{id}',[ProfileController::class,'Update'])->name('edit.update');
